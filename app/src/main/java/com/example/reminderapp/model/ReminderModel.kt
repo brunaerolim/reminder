@@ -9,12 +9,12 @@ class ReminderModel {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val id: Int = 0
+    var id: Int = 0
 
     @ColumnInfo(name = "title")
-    val title: String = ""
+    var title: String = ""
 
     @ColumnInfo(name = "date")
-    val date: String = ""
+    var date: String = ""
 
 }
