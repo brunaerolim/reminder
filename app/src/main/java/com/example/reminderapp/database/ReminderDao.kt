@@ -1,24 +1,24 @@
 package com.example.reminderapp.database
 
+import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.reminderapp.model.ReminderModel
-import kotlinx.coroutines.flow.Flow
 
+@Dao
 interface ReminderDao {
+
     @Insert
-    suspend fun insertReminder (reminderModel: ReminderModel)
+   suspend  fun insertReminder (reminderModel: ReminderModel): Long
 
     @Update
-    suspend fun updateReminder(reminderModel: ReminderModel)
+    suspend fun updateReminder(reminderModel: ReminderModel): Int
 
     @Delete
     suspend fun deleteReminder (reminderModel: ReminderModel)
 
-    @Query("SELECT * FROM reminder ORDER BY id DESC")
-    fun getAllReminders(): Flow<List<ReminderModel>>
-
+    @Query("SELECT * FROM reminder WHERE date = date GROUP BY title")
+   suspend fun getByDate() : ReminderModel
 }
