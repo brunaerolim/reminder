@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
-@Entity(tableName = "reminderdb")
+@Entity(tableName = "reminder")
 @Parcelize
 data class ReminderModel (
     @PrimaryKey(autoGenerate = true)

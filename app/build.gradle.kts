@@ -68,5 +68,5 @@ dependencies {
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     // Annotation processor
-    kapt("androidx.lifecycle:lifecycle-common:$lifecycleVersion")
+    ksp("androidx.lifecycle:lifecycle-common:$lifecycleVersion")
 }

@@ -2,6 +2,7 @@ package com.example.reminderapp.database
 
 import android.content.Context
 import androidx.room.Database
+import androidx.room.Room
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
 import com.example.reminderapp.model.ReminderModel
@@ -15,19 +16,20 @@ abstract class ReminderDb : RoomDatabase() {
 
     companion object {
         @Volatile
-        private var INSTANCE: ReminderDb? = null
+        private var Instance: ReminderDb? = null
         private val Lock = Any()
 
 
-        operator fun invoke(context: Context) = INSTANCE ?: synchronized(Lock) {
-            INSTANCE ?: createDatabase(context).also { INSTANCE = it }
+        operator fun invoke(context: Context) = Instance ?:
+        synchronized(Lock) {
+            Instance ?: createDatabase(context).also { Instance = it }
         }
 
         private fun createDatabase(context: Context) =
             databaseBuilder(
                 context.applicationContext,
                 ReminderDb::class.java,
-                "reminderdb"
+                "reminder"
             ).build()
     }
 }
