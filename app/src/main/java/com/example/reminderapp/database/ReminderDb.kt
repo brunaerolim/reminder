@@ -27,7 +27,7 @@ abstract class ReminderDb : RoomDatabase() {
             databaseBuilder(
                 context.applicationContext,
                 ReminderDb::class.java,
-                "reminder_db"
+                "reminderdb"
             ).build()
     }
 }

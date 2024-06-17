@@ -21,6 +21,6 @@ interface ReminderDao {
     @Delete
     suspend fun deleteReminder (reminderModel: ReminderModel)
 
-    @Query("SELECT * FROM reminder WHERE date = date GROUP BY title")
-    suspend fun getAll() : LiveData<List<ReminderModel>>
+    @Query("SELECT * FROM reminderdb")
+     fun getAll() : LiveData<List<ReminderModel>>
 }
