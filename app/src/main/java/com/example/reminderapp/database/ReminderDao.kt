@@ -11,7 +11,7 @@ import com.example.reminderapp.model.ReminderModel
 interface ReminderDao {
 
     @Insert
-   suspend  fun insertReminder (reminderModel: ReminderModel): Long
+    suspend  fun insertReminder (reminderModel: ReminderModel): Long
 
     @Update
     suspend fun updateReminder(reminderModel: ReminderModel): Int
@@ -20,5 +20,5 @@ interface ReminderDao {
     suspend fun deleteReminder (reminderModel: ReminderModel)
 
     @Query("SELECT * FROM reminder WHERE date = date GROUP BY title")
-   suspend fun getByDate() : ReminderModel
+    suspend fun getAll() : ReminderModel
 }
