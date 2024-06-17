@@ -4,8 +4,6 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.reminderapp.model.ReminderModel
 
 
@@ -14,32 +12,22 @@ abstract class ReminderDb : RoomDatabase() {
 
     abstract fun reminderDao(): ReminderDao
 
+
     companion object {
+        @Volatile
+        private var INSTANCE: ReminderDb? = null
+        private val Lock = Any()
 
-        private lateinit var INSTANCE: ReminderDb
 
-        fun getDatabase(context: Context): ReminderDb {
-
-            if (!::INSTANCE.isInitialized) {
-                synchronized(ReminderDb::class.java) {
-                    INSTANCE = databaseBuilder(
-                        context,
-                        ReminderDb::class.java,
-                        "reminderdb"
-                    )
-                        .addMigrations(MIGRATION_1_2)
-                        .allowMainThreadQueries()
-                        .build()
-                }
-            }
-            return INSTANCE
+        operator fun invoke(context: Context) = INSTANCE ?: synchronized(Lock) {
+            INSTANCE ?: createDatabase(context).also { INSTANCE = it }
         }
 
-        private val MIGRATION_1_2 = object : Migration(1, 2) {
-            override fun migrate(db: SupportSQLiteDatabase) {
-                db.execSQL("DELETE FROM reminder")
-            }
-        }
-
+        private fun createDatabase(context: Context) =
+            databaseBuilder(
+                context.applicationContext,
+                ReminderDb::class.java,
+                "reminder_db"
+            ).build()
     }
 }
