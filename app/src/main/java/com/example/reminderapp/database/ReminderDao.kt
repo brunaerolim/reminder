@@ -8,6 +8,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.reminderapp.model.ReminderModel
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ReminderDao {
@@ -22,5 +23,5 @@ interface ReminderDao {
     suspend fun deleteReminder (reminderModel: ReminderModel)
 
     @Query("SELECT * FROM reminder ORDER BY date DESC")
-     fun getAll() : LiveData<List<ReminderModel>>
+    fun getAll(): Flow<List<ReminderModel>>
 }
