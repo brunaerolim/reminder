@@ -16,6 +16,7 @@ interface ReminderDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertReminder (reminderModel: ReminderModel)
 
+
     @Update
     suspend fun updateReminder(reminderModel: ReminderModel)
 

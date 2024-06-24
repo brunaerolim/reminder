@@ -1,24 +1,23 @@
 package com.example.reminderapp.repository
 
-import androidx.annotation.WorkerThread
-import com.example.reminderapp.database.ReminderDao
+
+import com.example.reminderapp.database.ReminderDb
 import com.example.reminderapp.model.ReminderModel
 
 
 class ReminderRepository
-    (private val reminderDao: ReminderDao) {
+    (private val db: ReminderDb) {
 
-    val allReminders = reminderDao.getAll()
-    @WorkerThread
     suspend fun insertReminder(reminderModel: ReminderModel) {
-        reminderDao.insertReminder(reminderModel)
+        db.reminderDao().insertReminder(reminderModel)
     }
-
     suspend fun updateReminder(reminderModel: ReminderModel) {
-        reminderDao.updateReminder(reminderModel)
+        db.reminderDao().updateReminder(reminderModel)
     }
 
     suspend fun deleteReminder(reminderModel: ReminderModel) {
-        reminderDao.deleteReminder(reminderModel)
+        db.reminderDao().deleteReminder(reminderModel)
     }
+
+    fun getAllReminders() = db.reminderDao().getAll()
 }
