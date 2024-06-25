@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:autofillHints="Nome do lembrete"/>
 
     <EditText
         android:id="@+id/input_date"
@@ -20,10 +21,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/input_text"
         app:layout_constraintStart_toStartOf="@id/input_text"
-        android:inputType="date"/>
+        android:inputType="date"
+        android:autofillHints="Data formato dd/mm/yyy" />
 
     <Button
-        android:layout_width="m"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/input_date"
         app:layout_constraintEnd_toEndOf="@id/input_date" />
