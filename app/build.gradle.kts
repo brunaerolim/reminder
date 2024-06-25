@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id ("kotlin-parcelize")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -35,11 +35,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
-    buildFeatures{
-        dataBinding = true
-    }
-
 }
 dependencies {
     implementation("androidx.core:core-ktx:1.13.1")
@@ -48,25 +43,23 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.media3:media3-test-utils:1.3.1")
     // ROOM
-    val roomVersion = "2.6.1"
-    implementation("androidx.room:room-runtime:$roomVersion")
-    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+    ksp("androidx.lifecycle:lifecycle-common:2.8.2")
+    ksp("androidx.room:room-compiler:2.6.1")
     // Coroutines
-    implementation ("androidx.room:room-ktx:$roomVersion")
+    implementation ("androidx.room:room-ktx:2.6.1")
     // Lifecycle
     val lifecycleVersion = "2.8.2"
     implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
-    // KSP
-    kapt("androidx.lifecycle:lifecycle-common:2.8.2")
-    kapt("androidx.room:room-compiler:$roomVersion")
 
     testImplementation ("androidx.lifecycle:lifecycle-runtime-testing:2.8.2")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
+    testImplementation("androidx.databinding:compilerCommon:3.2.0-alpha11")
 
 }

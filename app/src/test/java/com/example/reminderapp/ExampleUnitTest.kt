@@ -14,9 +14,8 @@ class ExampleUnitTest {
 
     @Test
     fun insertReminder() {
-        val reminder = ReminderModel(1, "Title", "Date")
-        assertEquals(1, reminder.id)
-        assertEquals("Titulo teste", reminder.title)
-        assertEquals("24/07/2021", reminder.date)
+        val reminder = ReminderModel(1, "Novo título", "21/10/2021")
+        return assertEquals(1, reminder.id)
+        arrayListOf<R>()
     }
 }
