@@ -2,8 +2,15 @@ package com.example.reminderapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
+import com.example.reminderapp.database.ReminderDb
+import com.example.reminderapp.repository.ReminderRepository
+import com.example.reminderapp.viewmodel.ReminderViewModel
+import com.example.reminderapp.viewmodel.ReminderViewModelFactory
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var reminderViewModel: ReminderViewModel
 
 
 
@@ -12,6 +19,4 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
     }
-
-
 }
