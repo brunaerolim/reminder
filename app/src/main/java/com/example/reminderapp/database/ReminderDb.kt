@@ -11,19 +11,13 @@ import com.example.reminderapp.model.ReminderModel
 abstract class ReminderDb : RoomDatabase() {
 
     abstract fun reminderDao(): ReminderDao
-
-
     companion object {
         @Volatile
         private var Instance: ReminderDb? = null
         private val Lock = Any()
-
-
-        operator fun invoke(context: Context) = Instance ?:
-        synchronized(Lock) {
+        operator fun invoke(context: Context) = Instance ?: synchronized(Lock) {
             Instance ?: createDatabase(context).also { Instance = it }
         }
-
         private fun createDatabase(context: Context) =
             databaseBuilder(
                 context.applicationContext,
@@ -31,6 +25,5 @@ abstract class ReminderDb : RoomDatabase() {
                 "reminderdb"
             ).build()
                 .also { Instance = it }
-
     }
 }

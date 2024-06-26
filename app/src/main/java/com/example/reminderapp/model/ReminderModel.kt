@@ -7,10 +7,9 @@ import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "reminder")
 @Parcelize
-data class ReminderModel (
+data class ReminderModel(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
     var title: String,
     var date: String,
-
-    ): Parcelable
+) : Parcelable

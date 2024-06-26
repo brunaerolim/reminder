@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class ReminderViewModel(app: Application, private val repository: ReminderRepository) : ViewModel() {
 
     private val _uiState = MutableStateFlow(LatestReminderUiState.Success(emptyList()))
-    val uiState: StateFlow<LatestReminderUiState> = _uiState
+    val uiState: StateFlow<LatestReminderUiState> get() = _uiState
     fun addReminder(reminderModel: ReminderModel) = viewModelScope.launch {
         repository.insertReminder(reminderModel)
     }
@@ -23,6 +23,10 @@ class ReminderViewModel(app: Application, private val repository: ReminderReposi
 
     fun deleteReminder(reminderModel: ReminderModel) = viewModelScope.launch {
         repository.deleteReminder(reminderModel)
+    }
+
+    fun getAllReminders() = viewModelScope.launch {
+        repository.getAllReminders()
     }
 
     init {
