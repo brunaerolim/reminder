@@ -9,7 +9,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class ReminderViewModel(app: Application, private val repository: ReminderRepository) : ViewModel() {
+class ReminderViewModel(app: Application, private val repository: ReminderRepository) :
+    ViewModel() {
 
     private val _uiState = MutableStateFlow(LatestReminderUiState.Success(emptyList()))
     val uiState: StateFlow<LatestReminderUiState> get() = _uiState
