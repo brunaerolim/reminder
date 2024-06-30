@@ -32,16 +32,36 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.3"
+    }
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        compose = true
+    }
 }
 dependencies {
+
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.media3:media3-test-utils:1.3.1")
+
+    // Compose
+    implementation("androidx.compose.ui:ui:1.6.8")
+    implementation ("androidx.compose.foundation:foundation:1.6.8")
+    implementation ("androidx.compose.material:material:1.6.8")
+    implementation ("androidx.activity:activity-compose:1.9.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.2")
+    implementation ("androidx.compose.runtime:runtime-livedata:1.6.8")
+
+    // Compose preview tools
+    implementation("androidx.compose.ui:ui-tooling-preview:1.6.8")
+    implementation("androidx.compose.ui:ui-tooling:1.6.8")
     // ROOM
     implementation("androidx.room:room-runtime:2.6.1")
     annotationProcessor("androidx.room:room-compiler:2.6.1")
@@ -63,5 +83,7 @@ dependencies {
     testImplementation("androidx.databinding:compilerCommon:3.2.0-alpha11")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
+    androidTestImplementation ("androidx.compose.ui:ui-test-junit4")
+    androidTestImplementation ("androidx.compose.ui:ui-test-manifest")
 
 }
