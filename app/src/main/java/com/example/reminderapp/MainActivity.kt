@@ -1,12 +1,30 @@
 package com.example.reminderapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    }
+
+    @Composable
+        fun Greeting(name: String, modifier: Modifier = Modifier) {
+            Text(
+                text = "Hello $name!",
+                modifier = modifier
+            )
+        }
+    @Preview(showBackground = true)
+    @Composable
+    fun GreetingPreview() {
+        MaterialTheme {
+            Greeting(name = "Android")
+        }
     }
 }
